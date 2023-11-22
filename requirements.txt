@@ -3,4 +3,3 @@ numpy==1.25.2
 pandas==2.0.3
 psycopg2==2.9.7
 SQLAlchemy==2.0.20
-numpy==8.7
