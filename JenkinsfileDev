@@ -6,7 +6,7 @@ pipeline {
                 bat 'IF NOT EXIST nr-spar-data-sync mkdir nr-spar-data-sync'
                 bat 'cd nr-spar-data-sync'
                 bat 'ECHO %cd%'
-                // checkout([$class: 'GitSCM', branches: [[name: "5-adapt-engine-to-run-on-jenkins"]], extensions: [], userRemoteConfigs: [[url: 'https://github.com/bcgov/nr-spar-data-sync']]])
+                checkout([$class: 'GitSCM', branches: [[name: "5-adapt-engine-to-run-on-jenkins"]], extensions: [], userRemoteConfigs: [[url: 'https://github.com/bcgov/nr-spar-data-sync']]])
              }     
          }
 		 stage('python-exists') {
@@ -22,7 +22,7 @@ pipeline {
          stage('venv-plus-requirements-install') {
              steps{
                 bat 'ECHO %cd%'
-				bat 'IF EXIST vev rmdir vev'
+				bat 'IF EXIST vev rmdir /s /q vev'
                 bat 'python -m venv --clear vev'
              }     
          }
