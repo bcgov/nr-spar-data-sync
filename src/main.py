@@ -7,6 +7,10 @@ def main() -> None:
                               disable_existing_loggers=False)   
     # data_sync.data_sync()
     print("OK")
+    # Testing Secrets variable from Jenkins Credentials Plugin
+    import os
+    print(os.environ['Usr_teste'] + " " + os.environ['Psw_Test'] )
+    
     
 if __name__ == '__main__':
     main()
