@@ -9,7 +9,17 @@ def main() -> None:
     print("OK")
     
     # Testing Secrets variable from Jenkins Credentials Plugin    
-    print(os.environ['Usr_teste'] + " " + os.environ['Psw_Test'] )    
+    print(os.environ['Usr_teste'] + " " + os.environ['Psw_Test'] ) 
+    
+    if os.environ['Usr_teste'] == "usuario_teste":
+        print("Usr credential accepted")
+    else:
+        print("Usr credential incorrect")
+        
+    if os.environ['Psw_Test'] == "senha":
+        print("Password credential accepted")
+    else:
+        print("Password credential incorrect")
     
 if __name__ == '__main__':
     main()
