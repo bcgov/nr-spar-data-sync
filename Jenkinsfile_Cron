@@ -6,7 +6,7 @@ pipeline {
                 bat 'IF NOT EXIST nr-spar-data-sync mkdir nr-spar-data-sync'
                 bat 'cd nr-spar-data-sync'
                 bat 'ECHO %cd%'
-                checkout([$class: 'GitSCM', branches: [[name: "5-adapt-engine-to-run-on-jenkins"]], extensions: [], userRemoteConfigs: [[url: 'https://github.com/bcgov/nr-spar-data-sync']]])
+                checkout([$class: 'GitSCM', branches: [[name: "main"]], extensions: [], userRemoteConfigs: [[url: 'https://github.com/bcgov/nr-spar-data-sync']]])
              }     
          }
 		 stage('python-exists') {
@@ -33,8 +33,8 @@ pipeline {
                         source ve/bin/activate
 					    python -m pip install -r ./requirements.txt --cache-dir ./data
                         cd src
-                        ECHO %Usr_teste%
-                        ECHO %Psw_Test%
+                        REM ECHO %Usr_teste%
+                        REM ECHO %Psw_Test%
                         python main.py
                     '''             
                  }
