@@ -9,16 +9,19 @@ pipeline {
     agent none 
     stages {
          stage('python-exists') {
-             steps{
-                sh 'python --version' 
-             }     
+		  agent {
+            label Podman.AGENT_LABEL_APP
+          }
+          steps{
+            sh 'python --version' 
+          }     
          }
 		 
 		 stage('Checkout code') {
-			steps {
+		 	steps {
 				checkout scm
 			}
-		  }	 
+		 }	 
          
     }
 }
