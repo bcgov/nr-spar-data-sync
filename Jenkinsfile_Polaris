@@ -1,0 +1,30 @@
+pipeline {
+    agent any 
+    stages {
+         stage('checkout') {
+             steps{
+                sh '''
+				if [ ! -d nr-spar-data-sync ]; then
+				  mkdir nr-spar-data-sync
+				fi
+				cd nr-spar-data-sync
+                pwd
+                '''
+             }     
+         }
+		 
+		 stage('python-exists') {
+             steps{
+                sh 'python --version' 
+             }     
+         }
+		 
+		 stage('Checkout code') {
+			steps {
+				checkout scm
+			}
+		  }
+		 		 
+         
+    }
+}
