@@ -1,19 +1,14 @@
+@Library('polaris')
+import ca.bc.gov.nrids.polaris.Podman
+import ca.bc.gov.nrids.polaris.BrokerIntention
+import ca.bc.gov.nrids.polaris.Vault
+
+def podman
+
 pipeline {
-    agent any 
+    agent none 
     stages {
-         stage('checkout') {
-             steps{
-                sh '''
-				if [ ! -d nr-spar-data-sync ]; then
-				  mkdir nr-spar-data-sync
-				fi
-				cd nr-spar-data-sync
-                pwd
-                '''
-             }     
-         }
-		 
-		 stage('python-exists') {
+         stage('python-exists') {
              steps{
                 sh 'python --version' 
              }     
@@ -23,8 +18,7 @@ pipeline {
 			steps {
 				checkout scm
 			}
-		  }
-		 		 
+		  }	 
          
     }
 }
