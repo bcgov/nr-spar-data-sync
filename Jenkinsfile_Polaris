@@ -21,8 +21,8 @@ pipeline {
                 label Podman.AGENT_LABEL_APP
             }
 		 	steps {
-				sh cd nr-spar-data-sync
-				sh dir 
+				sh 'cd nr-spar-data-sync'
+				sh 'dir'
 			}
 		 }
     }
