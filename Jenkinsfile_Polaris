@@ -23,6 +23,7 @@ pipeline {
 		 	steps {
 				sh 'pwd'
 				sh 'dir'
+				sh 'podman build --file=Dockerfile_Polaris .'
 			}
 		 }
     }
