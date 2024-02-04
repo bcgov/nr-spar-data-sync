@@ -9,9 +9,54 @@ pipeline {
     agent none 
     stages {
          stage('Checkout code') {
+			agent {
+                label Podman.AGENT_LABEL_APP
+            }
 		 	steps {
 				checkout scm
 			}
 		 }         
     }
+	/* post {
+        unstable {
+            node(Podman.AGENT_LABEL_APP) {
+                script {
+                    if (intention) {
+                        println intention.close(false)
+                    }
+                }
+            }
+        }
+        failure {
+            node(Podman.AGENT_LABEL_APP) {
+                script {
+                    if (intention) {
+                        println intention.close(false)
+                    }
+                }
+            }
+        }
+        aborted {
+            node(Podman.AGENT_LABEL_APP) {
+                script {
+                    if (intention) {
+                        println  intention.close(true)
+                    }
+                }
+            }
+        }
+        always {
+            node(Podman.AGENT_LABEL_APP) {
+                cleanWs(
+                    cleanWhenAborted: true,
+                    cleanWhenFailure: false,
+                    cleanWhenSuccess: true,
+                    cleanWhenUnstable: false,
+                    deleteDirs: true
+                )
+            }
+        }
+    }*/
 }
+
+ 
