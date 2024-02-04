@@ -15,7 +15,16 @@ pipeline {
 		 	steps {
 				checkout scm
 			}
-		 }         
+		 }
+		 stage('Run Compose') {
+			agent {
+                label Podman.AGENT_LABEL_APP
+            }
+		 	steps {
+				sh cd nr-spar-data-sync
+				sh dir 
+			}
+		 }
     }
 	/* post {
         unstable {
