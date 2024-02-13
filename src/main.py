@@ -22,12 +22,12 @@ def do_tests_in_jenkins():
         
 def testVault():  
     teste = os.environ['teste']  # Copying my token from vault
-    if teste =='123'
+    if teste =='123':
         print("OK"")
     else:
         print("not expected teste")
     vault_token = os.environ['vtoken']  # Copying my token from vault
-    if vault_token.startswith('hvs.')
+    if vault_token.startswith('hvs.'):
         print("Vault Looks OK!")
     else:
         print("Vault Looks BAD!")
