@@ -25,25 +25,16 @@ pipeline {
                 label Podman.AGENT_LABEL_APP
             }
 		 	steps {
-				sh 'pwd'
-				sh 'dir'
-				sh 'echo $teste'
-				sh 'echo $vtoken'
-				sh 'echo "podman build --build-arg=vtoken=$vtoken --build-arg=teste=$teste --file=Dockerfile_Polaris ."'
-			}
-		 }
-		 
-		 stage('Run Podman') {
-			agent {
-                label Podman.AGENT_LABEL_APP
-            }
-		 	steps {
-				script{
-					podman = new Podman(this,env)
-					podman.build('', '--file=Dockerfile_Polaris .')
+				withCredentials([string(credentials: 'VTOKEN')]) {
+					sh 'pwd'
+					sh 'dir'
+					sh 'echo $teste'
+					sh 'echo $VTOKEN'
+					sh 'podman build --build-arg=vtoken=$VTOKEN --build-arg=teste=$teste --file=Dockerfile_Polaris .'
 				}
 			}
 		 }
+		 
     }
 }
 
