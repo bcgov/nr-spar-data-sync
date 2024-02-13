@@ -21,52 +21,14 @@ pipeline {
                 label Podman.AGENT_LABEL_APP
             }
 		 	steps {
-				sh 'pwd'
-				sh 'dir'
-				sh 'podman build --file=Dockerfile_Polaris .'
+				withCredentials([string(credentialsId: 'vtoken')]) {
+					sh 'pwd'
+					sh 'dir'
+					sh 'podman build --env=vtoken --file=Dockerfile_Polaris .'
+				}
 			}
 		 }
     }
-	/* post {
-        unstable {
-            node(Podman.AGENT_LABEL_APP) {
-                script {
-                    if (intention) {
-                        println intention.close(false)
-                    }
-                }
-            }
-        }
-        failure {
-            node(Podman.AGENT_LABEL_APP) {
-                script {
-                    if (intention) {
-                        println intention.close(false)
-                    }
-                }
-            }
-        }
-        aborted {
-            node(Podman.AGENT_LABEL_APP) {
-                script {
-                    if (intention) {
-                        println  intention.close(true)
-                    }
-                }
-            }
-        }
-        always {
-            node(Podman.AGENT_LABEL_APP) {
-                cleanWs(
-                    cleanWhenAborted: true,
-                    cleanWhenFailure: false,
-                    cleanWhenSuccess: true,
-                    cleanWhenUnstable: false,
-                    deleteDirs: true
-                )
-            }
-        }
-    }*/
 }
 
  
