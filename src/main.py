@@ -21,6 +21,8 @@ def do_tests_in_jenkins():
         print("Password credential incorrect")
         
 def testVault():  
+    teste = os.environ['teste']  # Copying my token from vault
+    print(teste)
     vault_token = os.environ['vtoken']  # Copying my token from vault
     print(vault_token)
     vault_url = 'https://knox.io.nrs.gov.bc.ca/v1/groups/data/spar/test'
