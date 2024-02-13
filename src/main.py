@@ -23,7 +23,7 @@ def do_tests_in_jenkins():
 def testVault():  
     teste = os.environ['teste']  # Copying my token from vault
     if teste =='123':
-        print("OK"")
+        print("OK")
     else:
         print("not expected teste")
     vault_token = os.environ['vtoken']  # Copying my token from vault
