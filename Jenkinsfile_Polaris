@@ -8,7 +8,7 @@ def podman
 pipeline {
     agent none 
 	environment {
-        vtoken = credentials('VToken')
+        vtoken = credentials('VTOKEN')
 		teste = '123'
     }
     stages {
@@ -29,7 +29,7 @@ pipeline {
 				sh 'dir'
 				sh 'echo $teste'
 				sh 'echo $vtoken'
-				sh 'podman build --build-arg=vtoken=\'$voken\' --build-arg=teste=\'$teste\' --file=Dockerfile_Polaris .'
+				sh 'podman build --build-arg=vtoken=\'$vtoken\' --build-arg=teste=\'$teste\' --file=Dockerfile_Polaris .'
 			}
 		 }
     }

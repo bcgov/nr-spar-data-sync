@@ -22,9 +22,16 @@ def do_tests_in_jenkins():
         
 def testVault():  
     teste = os.environ['teste']  # Copying my token from vault
-    print(teste)
+    if teste =='123'
+        print("OK"")
+    else:
+        print("not expected teste")
     vault_token = os.environ['vtoken']  # Copying my token from vault
-    print(vault_token)
+    if vault_token.startswith('hvs.')
+        print("Vault Looks OK!")
+    else:
+        print("Vault Looks BAD!")
+    
     vault_url = 'https://knox.io.nrs.gov.bc.ca/v1/groups/data/spar/test'
     headers = {'X-Vault-Token': vault_token}
     res = requests.get(vault_url, headers=headers)
