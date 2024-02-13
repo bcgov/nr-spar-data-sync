@@ -8,7 +8,7 @@ def podman
 pipeline {
     agent none 
 	environment {
-        vtoken = credentials('vtoken')
+        vtoken = credentials('VToken')
 		teste = '123'
     }
     stages {
