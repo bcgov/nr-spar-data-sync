@@ -7,6 +7,9 @@ def podman
 
 pipeline {
     agent none 
+	environment {
+        vtoken = credentials('vtoken')
+    }
     stages {
          stage('Checkout code') {
 			agent {
@@ -21,11 +24,9 @@ pipeline {
                 label Podman.AGENT_LABEL_APP
             }
 		 	steps {
-				withCredentials([string(credentialsId: 'vtoken')]) {
-					sh 'pwd'
-					sh 'dir'
-					sh 'podman build --env=vtoken --file=Dockerfile_Polaris .'
-				}
+				sh 'pwd'
+				sh 'dir'
+				sh 'podman build --env=vtoken --file=Dockerfile_Polaris .'
 			}
 		 }
     }
