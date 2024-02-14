@@ -11,7 +11,7 @@ pipeline {
 		VTOKEN_COMMENT = 'Vault Token'
         VTOKEN = credentials('VTOKEN')
 		V_URL = credentials('VURL')
-		MODE_TEST = credentials('TEST_MODE')
+		MODE_TEST = credentials('TEST_EXECUTION')
 		TESTE_COMMMENT = 'Test Variable to check environment spread into podman instance'
 		TESTE = '123'
     }
