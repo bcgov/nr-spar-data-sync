@@ -11,7 +11,7 @@ pipeline {
 		VTOKEN_COMMENT = 'Vault Token'
         VTOKEN = credentials('VTOKEN')
 		V_URL = credentials('VURL')
-		THIS_IS_A_TEST = credentials('TEST_MODE')
+		MODE_TEST = credentials('TEST_MODE')
 		TESTE_COMMMENT = 'Test Variable to check environment spread into podman instance'
 		TESTE = '123'
     }
@@ -33,7 +33,7 @@ pipeline {
 				sh 'dir'
 				sh 'echo $TESTE'
 				sh 'echo $VTOKEN'
-				sh 'podman build --env=vtoken=$VTOKEN --env=vurl=$V_URL --env=test_mode=$THIS_IS_A_TEST --env=teste=$TESTE --file=Dockerfile_Polaris .'
+				sh 'podman build --env=vtoken=$VTOKEN --env=vurl=$V_URL --env=test_mode=$MODE_TEST --env=teste=$TESTE --file=Dockerfile_Polaris .'
 			}
 		 }
 		 
