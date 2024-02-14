@@ -25,7 +25,7 @@ pipeline {
                 label Podman.AGENT_LABEL_APP
             }
 		 	steps {
-				withCredentials([string(credentials: 'VTOKEN')]) {
+				withCredentials([string(credentialsID: 'VTOKEN')]) {
 					sh 'pwd'
 					sh 'dir'
 					sh 'echo $teste'
