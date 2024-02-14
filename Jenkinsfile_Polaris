@@ -10,8 +10,8 @@ pipeline {
 	environment {
 		VTOKEN_COMMENT = 'Vault Token'
         VTOKEN = credentials('VTOKEN')
-		V_URL = $VURL
-		DSE_TEST = $DSE_TEST_EXEC
+		V_URL = '$VURL'
+		DSE_TEST = '$DSE_TEST_EXEC'
 		TESTE_COMMMENT = 'Test Variable to check environment spread into podman instance'
 		TESTE = '123'
     }
