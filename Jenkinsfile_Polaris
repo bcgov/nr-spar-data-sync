@@ -34,6 +34,7 @@ pipeline {
 				sh 'echo $TESTE'
 				sh 'echo $VURL'
 				sh 'echo $TESTE_MODE'
+				sh 'echo $DSE_TEST_EXEC'
 				sh 'podman build --env=vtoken=$VTOKEN --env=vurl=$V_URL --env=test_mode=$TESTE_MODE --env=teste=$TESTE --file=Dockerfile_Polaris .'
 			}
 		 }
