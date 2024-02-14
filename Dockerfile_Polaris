@@ -21,4 +21,4 @@ RUN echo $teste
 
 # copy project
 COPY . .
-RUN python3 src/main.py
+RUN python3 src/main.py $test_mode
