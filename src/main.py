@@ -67,10 +67,12 @@ def testVault():
         print("Vault cannot be reached as required variables are not correctly informed")
 
 
+
 def main() -> None:
     logging_config.fileConfig(os.path.join(os.path.dirname(__file__), "logging.ini"), 
                               disable_existing_loggers=False)   
-    data_sync.data_sync()    
+    #data_sync.data_sync() 
+    do_tests_in_vault()
     
 if __name__ == '__main__':
     definitiion_of_yes = ["Y","YES","1","T","TRUE"]
