@@ -6,53 +6,53 @@ import os
 import sys
 
 def required_variables_exists():
-    ret = true
+    ret = True
     print("Checking if required variables are defined")
     
     if environ.get("teste") is None:
         print("Error: teste variable is None")
-        ret = false
+        ret = False
         
     if environ.get("vtoken") is None:
         print("Error: vtoken variable is None")
-        ret = false
+        ret = False
         
     if environ.get("vurl") is None:
         print("Error: vurl variable is None")
-        ret = false
+        ret = False
         
     if environ.get("test_mode") is None:
         print("Error: test mode variable is None")
-        ret = false
+        ret = False
         
-    if ret == false:
-        raise Exception("Not all required variables to execute a instance of Data Sync Engine exists.")
-    else:
+    if ret:
         print("Required variable test passed!")
+    else:
+        raise Exception("Not all required variables to execute a instance of Data Sync Engine exists.")
     
         
 def testVault():  
-    ret = true
+    ret = True
     
     teste = os.environ['teste']  # Copying my token from vault
     if teste =='123':
         print("Test control variable is ok")
     else:
-        ret = false
+        ret = False
         print("Test Control variable value is not expected")
         
     vault_url = os.environ['vurl']  # Vault url
     if vault_token.startswith('https://'):
         print("Vault URL looks good")
     else:
-        ret = false
+        ret = False
         print("Vault URL value is not expected")
     
     vault_token = os.environ['vtoken']  # Copying my token from vault
     if vault_token.startswith('hvs.'):
         print("Vault token variable looks good (it not means token is correct)")
     else:
-        ret = false
+        ret = False
         print("Vault token value is not in the pattern requested")
     
     if ret:
