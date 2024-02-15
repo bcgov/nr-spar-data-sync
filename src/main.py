@@ -9,19 +9,19 @@ def required_variables_exists():
     ret = True
     print("Checking if required variables are defined")
     
-    if environ.get("teste") is None:
+    if os.environ.get("teste") is None:
         print("Error: teste variable is None")
         ret = False
         
-    if environ.get("vtoken") is None:
+    if os.environ.get("vtoken") is None:
         print("Error: vtoken variable is None")
         ret = False
         
-    if environ.get("vurl") is None:
+    if os.environ.get("vurl") is None:
         print("Error: vurl variable is None")
         ret = False
         
-    if environ.get("test_mode") is None:
+    if os.environ.get("test_mode") is None:
         print("Error: test mode variable is None")
         ret = False
         
