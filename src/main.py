@@ -42,14 +42,14 @@ def testVault():
         print("Test Control variable value is not expected")
         
     vault_url = os.environ['vurl']  # Vault url
-    if vault_token.startswith('https://'):
+    if vault_url.startswith('https://'):
         print("Vault URL looks good")
     else:
         ret = False
         print("Vault URL value is not expected")
     
-    vault_token = os.environ['vtoken']  # Copying my token from vault
-    if vault_token.startswith('hvs.'):
+    vault_url = os.environ['vtoken']  # Copying my token from vault
+    if vault_url.startswith('hvs.'):
         print("Vault token variable looks good (it not means token is correct)")
     else:
         ret = False
