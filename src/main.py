@@ -1,6 +1,7 @@
 import requests
 import json
 import module.data_synchronization as data_sync
+import module.database_connection as db_conn
 from logging import config as logging_config
 import os
 import sys
@@ -33,6 +34,7 @@ def required_variables_exists():
         
 def testVault():  
     ret = True
+    global dbParam
     
     teste = os.environ['teste']  # Copying my token from vault
     if teste =='123':
@@ -56,16 +58,32 @@ def testVault():
         print("Vault token value is not in the pattern requested")
     
     if ret:
-        vault_url = 'https://knox.io.nrs.gov.bc.ca/v1/groups/data/spar/test'
+        #vault_url = 'https://knox.io.nrs.gov.bc.ca/v1/groups/data/spar/test'
         headers = {'X-Vault-Token': vault_token}
         res = requests.get(vault_url, headers=headers)
         # print(res.text)    
         j = json.loads(res.text)
+        dbParam = j["data"]["data"]
         # print(j)
         
     else:
         print("Vault cannot be reached as required variables are not correctly informed")
-
+        dbParam = None
+        
+        
+def testConnection():
+    if dbParam != None:
+        dbConfig = {
+            "type": "ORACLE",
+            "username": dbParam["user"],
+            "password": dbParam["pass"],
+            "host": dbParam["host"],
+            "port": dbParam["port"],
+            "service_name": dbParam["sn"],
+            "schema": "THE",
+            "test_query": "SELECT 1 FROM DUAL"
+        }
+    return db_conn.test_db_connection(dbConfig):
 
 
 def main() -> None:
@@ -81,6 +99,7 @@ if __name__ == '__main__':
         print("Executing in Test mode")
         required_variables_exists()
         testVault()
+        testConnection()
         
     else:
         main()

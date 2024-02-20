@@ -51,6 +51,14 @@ class database_connection(object):
         """ Runs a SQL statement. """
         self.conn.rollback()
         
+    def test_db_connection(database_config):
+        connection_string = format_connection_string(database_config)
+        engine = create_engine(connection_string)
+        conn = engine.connect().execution_options(autocommit=False)
+        result = conn.execute(database_config["test_query"])
+        return result
+        
+        
     def format_connection_string(self, database_config: str):
         """ Formats the connection string based on the database type and the connection configuration. """
         if database_config['type'] == 'ORACLE':
