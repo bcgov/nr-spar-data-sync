@@ -5,7 +5,7 @@ class test_db_connection:
     """ Class used to test database connections. """
     def do_test(database_config):
         """ Test Connection """
-        connection_string = format_connection_string(database_config)
+        connection_string = test_db_connection.format_connection_string(database_config)
         engine = create_engine(connection_string)
         conn = engine.connect().execution_options(autocommit=False)
         result = conn.execute(database_config["test_query"])
