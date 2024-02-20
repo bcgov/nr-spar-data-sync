@@ -83,7 +83,7 @@ def testConnection():
             "schema": "THE",
             "test_query": "SELECT 1 FROM DUAL"
         }
-    return db_conn.test_db_connection(dbConfig):
+    return db_conn.test_db_connection(dbConfig)
 
 
 def main() -> None:
