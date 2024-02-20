@@ -71,7 +71,7 @@ def testVault():
         
         
 def testConnection():
-    import module.test_db_connection
+    from module.test_db_connection import test_db_connection
     if dbParam != None:
         dbConfig = {
             "type": "ORACLE",
@@ -83,7 +83,7 @@ def testConnection():
             "schema": "THE",
             "test_query": "SELECT 1 FROM DUAL"
         }
-    d = module.test_db_connection.do_test(dbConfig)
+    d = test_db_connection.do_test(dbConfig)
     print(d)
 
 
