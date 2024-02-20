@@ -12,6 +12,7 @@ pipeline {
         VTOKEN = credentials('VTOKEN')
 		TESTE_COMMMENT = 'Test Variable to check environment spread into podman instance'
 		TESTE = '123'
+		DPI_DEBUG_LEVEL=64
     }
     stages {
          stage('Checkout code') {
