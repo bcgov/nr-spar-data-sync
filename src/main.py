@@ -1,7 +1,7 @@
 import requests
 import json
 import module.data_synchronization as data_sync
-import module.test_db_connection as test_db_connection
+import module.test_db_connection as testDB
 from logging import config as logging_config
 import os
 import sys
@@ -83,7 +83,7 @@ def testConnection():
             "schema": "THE",
             "test_query": "SELECT 1 FROM DUAL"
         }
-    d = test.do_test(dbConfig)
+    d = testDB.do_test(dbConfig)
     print(d)
 
 
