@@ -33,9 +33,8 @@ class test_db_connection:
                 database_config['database'])
             return create_engine(connection_string)
 
-        return connection_string
         
-    def format_connection_string(database_config: str):
+"""    def format_connection_string(database_config: str):
         """ Formats the connection string based on the database type and the connection configuration. """
         if database_config['type'] == 'ORACLE':
             connection_string = ('oracle+oracledb://:@',
@@ -58,3 +57,4 @@ class test_db_connection:
                 database_config['database'])
 
         return connection_string
+"""
