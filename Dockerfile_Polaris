@@ -1,11 +1,17 @@
 # pull official base image
-FROM ghcr.io/oracle/oraclelinux:8
+FROM python:3.9-bookworm
 
-RUN dnf -y module disable python36 && \
-    dnf -y module enable python39 && \
-    dnf -y install python39 python39-pip python39-setuptools python39-wheel && \
-    rm -rf /var/cache/dnf
-
+# Install Oracle Instant Client to gather required libraries
+WORKDIR    /opt/oracle
+RUN        apt-get update && apt-get install -y libaio1 wget unzip \
+            && wget https://download.oracle.com/otn_software/linux/instantclient/instantclient-basiclite-linuxx64.zip \
+            && unzip instantclient-basiclite-linuxx64.zip \
+            && rm -f instantclient-basiclite-linuxx64.zip \
+            && cd /opt/oracle/instantclient* \
+            && rm -f *jdbc* *occi* *mysql* *README *jar uidrvci genezi adrci \
+            && echo /opt/oracle/instantclient* > /etc/ld.so.conf.d/oracle-instantclient.conf \
+            && ldconfig
+			
 # set work directory
 WORKDIR /usr/src/app
 
@@ -20,10 +26,9 @@ ENV ARCHFLAGS -arch x86_64
 #    && apk add postgresql-dev gcc python3-dev
 
 # install dependencies
-#RUN compgen -A function -abck | sort | uniq
-#RUN pip3 install --upgrade pip3
+RUN pip install --upgrade pip
 COPY ./requirements.txt .
-RUN pip3 install -r requirements.txt
+RUN pip install -r requirements.txt
 
 RUN echo $teste
 
