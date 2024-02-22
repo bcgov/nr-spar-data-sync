@@ -1,6 +1,5 @@
 import requests
 import json
-import module.data_synchronization as data_sync
 from logging import config as logging_config
 import os
 import sys
