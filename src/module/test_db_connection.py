@@ -1,4 +1,4 @@
-import cx_Oracle
+import oracledb
 from sqlalchemy import create_engine, text
 
 class test_db_connection:
@@ -14,17 +14,15 @@ class test_db_connection:
     def format_connection_string(database_config: str):
         """ Formats the connection string based on the database type and the connection configuration. """
         if database_config['type'] == 'ORACLE':
-            dsn = cx_Oracle.makedsn(
-                database_config['host'], 
-                database_config['port'], 
-                service_name=database_config['service_name']
-            )
-
-            connection_string = (
-                'oracle+cx_oracle://{}:{}@'.format(
-                    database_config['username'], 
-                    database_config['password']
-                ) + dsn
+            connection_string = (f'oracle+oracledb://:@',
+                thick_mode=False,
+                connect_args={
+                    "user": database_config['username'],
+                    "password": database_config['password'],
+                    "host": database_config['host'],
+                    "port": database_config['port'],
+                    "service_name": database_config['service_name']
+                }
             )
 
         if database_config['type'] == 'POSTGRES':

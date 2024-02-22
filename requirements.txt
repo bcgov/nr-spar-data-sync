@@ -1,4 +1,4 @@
-cx-Oracle
+oracledb
 numpy==1.22.4
 pandas==2.0.3
 psycopg2==2.9.7
