@@ -10,7 +10,7 @@ class test_db_connection:
         print(connection_string)
         engine = create_engine(connection_string)
         conn = engine.connect().execution_options(autocommit=False)
-        result = conn.execute(database_config["test_query"])
+        result = conn.execute(text(database_config["test_query"]))
         return result        
         
     def format_connection_string(database_config: str):
