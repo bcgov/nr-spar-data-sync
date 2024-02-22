@@ -21,7 +21,7 @@ ENV ARCHFLAGS -arch x86_64
 
 # install dependencies
 #RUN compgen -A function -abck | sort | uniq
-RUN pip3 install --upgrade pip
+RUN pip3 install --upgrade pip3
 COPY ./requirements.txt .
 RUN pip3 install -r requirements.txt
 
