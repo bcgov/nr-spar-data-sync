@@ -1,3 +1,4 @@
+oracledb
 cx-Oracle
 numpy==1.22.4
 pandas==2.0.3

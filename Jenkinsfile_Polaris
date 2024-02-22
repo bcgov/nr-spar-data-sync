@@ -11,7 +11,6 @@ pipeline {
 		VTOKEN_COMMENT = 'Vault Token'
         VTOKEN = credentials('VTOKEN')
 		TESTE_COMMMENT = 'Test Variable to check environment spread into podman instance'
-		ARCHFLAGS = '-arch x86_64'
 		TESTE = '123'
 		DPI_DEBUG_LEVEL=64
     }
@@ -35,7 +34,7 @@ pipeline {
 				sh 'echo $VURL'
 				sh 'echo $TESTE_MODE'
 				sh 'echo $DSE_TEST_EXEC'
-				sh 'podman build --env=vtoken=$VTOKEN --env=vurl=$VURL --env=ARCHFLAGS=$ARCHFLAGS --env=test_mode=$DSE_TEST_EXEC --env=teste=$TESTE --platform=linux/amd64 --file=Dockerfile_Polaris .'
+				sh 'podman build --env=vtoken=$VTOKEN --env=vurl=$VURL --env=test_mode=$DSE_TEST_EXEC --env=teste=$TESTE --platform=linux/amd64 --file=Dockerfile_Polaris .'
 			}
 		 }		 
     }
