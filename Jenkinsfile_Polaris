@@ -10,6 +10,12 @@ pipeline {
 	environment {
 		VTOKEN_COMMENT = 'Vault Token'
         VTOKEN = credentials('VTOKEN')
+		OCTOKEN = credentials('OCToken')
+		OCSERVER = credentials('OCServer')
+		OCPROJECT = credentials('OCProject')
+		OCPOD = credentials('OCPod')
+		OCPORT = credentials('OCPort')
+		OCPORTFOR = credentials('OCPortForward')
 		TESTE_COMMMENT = 'Test Variable to check environment spread into podman instance'
 		TESTE = '123'
 		DPI_DEBUG_LEVEL=64
@@ -23,6 +29,18 @@ pipeline {
 				checkout scm
 			}
 		 }
+		 stage('Enable OC Port Forward') {
+			agent {
+                label Podman.AGENT_LABEL_APP
+            } 
+			steps {
+				sh 'oc login --token=$OCTOKEN --server=$OCSERVER'
+				sh 'oc project $OCPROJECT'
+				sh 'oc port-forward $OCPOD $OCPORTFOR:$OCPORT'
+			}
+		 } 
+		 
+		 
 		 stage('Run Compose') {
 			agent {
                 label Podman.AGENT_LABEL_APP
