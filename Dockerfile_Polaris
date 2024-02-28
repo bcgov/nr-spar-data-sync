@@ -1,5 +1,5 @@
 # pull official base image
-FROM  ubi8/python-39
+FROM  registry.access.redhat.com/ubi8/python-39
 			
 # set work directory
 WORKDIR /usr/src/app
