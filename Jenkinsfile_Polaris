@@ -28,18 +28,7 @@ pipeline {
 		 	steps {
 				checkout scm
 			}
-		 }
-		 stage('Enable OC Port Forward') {
-			agent {
-                label Podman.AGENT_LABEL_APP
-            } 
-			steps {
-				sh 'oc login --token=$OCTOKEN --server=$OCSERVER'
-				sh 'oc project $OCPROJECT'
-				sh 'oc port-forward $OCPOD $OCPORTFOR:$OCPORT'
-			}
-		 } 
-		 
+		 }		 
 		 
 		 stage('Run Compose') {
 			agent {
