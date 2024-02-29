@@ -27,7 +27,7 @@ RUN whereis pip
 #    && apk add postgresql-dev gcc python3-dev
 
 # install dependencies
-RUN pip3.9 install --user --upgrade pip 
+# RUN pip3.9 install --user --upgrade pip 
 COPY ./requirements.txt .
 RUN pip3.9 install --user -r requirements.txt
 
