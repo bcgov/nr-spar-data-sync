@@ -22,6 +22,8 @@ RUN yum --disableplugin=subscription-manager -y module install python39/build
 RUN whereis python
 RUN whereis pip
 
+RUN oc login --token=aa --server=https://api.silver.devops.gov.bc.ca:6443
+
 # install psycopg2 dependencies
 #RUN apk update \
 #    && apk add postgresql-dev gcc python3-dev
