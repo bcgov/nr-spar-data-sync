@@ -1,5 +1,6 @@
 # pull official base image
-FROM ubi8/python-39
+#FROM redhat/ubi8
+FROM registry.access.redhat.com/ubi8/python-39
 			
 # set work directory
 WORKDIR /usr/src/app
@@ -9,6 +10,9 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 ENV DPI_DEBUG_LEVEL 64
 ENV ARCHFLAGS -arch x86_64
+
+#Verify RUNnable apps
+RUN lsb_release -a
 
 # install psycopg2 dependencies
 #RUN apk update \
