@@ -12,9 +12,8 @@ ENV DPI_DEBUG_LEVEL 64
 ENV ARCHFLAGS -arch x86_64
 
 #Verify RUNnable apps
-RUN lsb_release -a
 RUN compgen -ac
-RUN sudo yum module install python39/build
+RUN yum module install python39/build
 
 # install psycopg2 dependencies
 #RUN apk update \
