@@ -27,12 +27,12 @@ RUN whereis pip
 #    && apk add postgresql-dev gcc python3-dev
 
 # install dependencies
-RUN pip install --upgrade pip
+RUN pip3.9 install --upgrade pip
 COPY ./requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip3.9 install -r requirements.txt
 
 RUN echo $teste
 
 # copy project
 COPY . .
-RUN python3 src/main.py $test_mode
+RUN python3.9 src/main.py $test_mode
