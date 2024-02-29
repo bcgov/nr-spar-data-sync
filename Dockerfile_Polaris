@@ -1,6 +1,6 @@
 # pull official base image
-#FROM redhat/ubi8
-FROM registry.access.redhat.com/ubi8/python-39
+#FROM registry.access.redhat.com/ubi8/python-39
+FROM redhat/ubi8
 			
 # set work directory
 WORKDIR /usr/src/app
@@ -13,6 +13,8 @@ ENV ARCHFLAGS -arch x86_64
 
 #Verify RUNnable apps
 RUN lsb_release -a
+RUN compgen -ac
+RUN sudo yum module install python39/build
 
 # install psycopg2 dependencies
 #RUN apk update \
