@@ -18,7 +18,7 @@ ENV ARCHFLAGS -arch x86_64
 RUN compgen -ac
 #RUN yum module install python39/build
 RUN yum repolist
-RUN yum --disableplugin=subscription-manager -y module install python39-pip
+RUN yum --disableplugin=subscription-manager -y module install python39/build
 RUN whereis python
 RUN whereis pip
 
