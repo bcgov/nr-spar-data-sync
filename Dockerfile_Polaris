@@ -13,7 +13,9 @@ ENV ARCHFLAGS -arch x86_64
 
 #Verify RUNnable apps
 RUN compgen -ac
-RUN yum module install python39/build
+#RUN yum module install python39/build
+RUN whereis python
+RUN whereis pip
 
 # install psycopg2 dependencies
 #RUN apk update \
