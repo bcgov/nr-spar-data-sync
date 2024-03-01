@@ -10,9 +10,6 @@ ENV PYTHONUNBUFFERED 1
 ENV DPI_DEBUG_LEVEL 64
 ENV ARCHFLAGS -arch x86_64
 
-
-
-
 # install psycopg2 dependencies
 #RUN apk update \
 #    && apk add postgresql-dev gcc python3-dev
@@ -23,6 +20,10 @@ COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
 RUN echo $teste
+RUN echo $OCS
+RUN echo $OCT
+RUN echo $OCP
+RUN echo $OCPD
 
 # copy project
 COPY . .
