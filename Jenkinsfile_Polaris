@@ -11,11 +11,6 @@ pipeline {
 		VTOKEN_COMMENT = 'Vault Token'
         VTOKEN = credentials('VTOKEN')
 		OCToken = credentials('OCToken')
-		OCServer = credentials('OCServer')
-		OCProject = credentials('OCProject')
-		OCPod = credentials('OCPod')
-		OCPort = credentials('OCPort')
-		OCPortForward = credentials('OCPortForward')
 		TESTE_COMMMENT = 'Test Variable to check environment spread into podman instance'
 		TESTE = '123'
 		DPI_DEBUG_LEVEL=64
