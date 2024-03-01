@@ -1,11 +1,6 @@
 # pull official base image
-#FROM registry.access.redhat.com/ubi8/python-39
-#FROM redhat/ubi8
-FROM ebits/openshift-client
-
-# Main user
-USER 0
-
+FROM python:3.9-bookworm
+			
 # set work directory
 WORKDIR /usr/src/app
 
@@ -15,14 +10,12 @@ ENV PYTHONUNBUFFERED 1
 ENV DPI_DEBUG_LEVEL 64
 ENV ARCHFLAGS -arch x86_64
 
-#Verify RUNnable apps
-#RUN compgen -ac
-#RUN yum module install python39/build
-#RUN yum repolist
-#RUN yum --disableplugin=subscription-manager -y module install python39/build
-RUN whereis python
-RUN whereis pip
-
+#Install OC to expose Openshift Postgres instance port
+RUN wget https://github.com/openshift/okd/releases/download/4.5.0-0.okd-2020-07-14-153706-ga/openshift-client-linux-4.5.0-0.okd-2020-07-14-153706-ga.tar.gz
+RUN mkdir oci
+RUN mv openshift-client-linux-4.5.0-0.okd-2020-07-14-153706-ga.tar.gz oci
+RUN cd oci
+RUN tar -xvf openshift-client-linux-4.5.0-0.okd-2020-07-14-153706-ga.tar.gz
 RUN oc version
 
 # install psycopg2 dependencies
@@ -30,12 +23,12 @@ RUN oc version
 #    && apk add postgresql-dev gcc python3-dev
 
 # install dependencies
-# RUN pip3.9 install --user --upgrade pip 
+RUN pip install --upgrade pip
 COPY ./requirements.txt .
-RUN pip3.9 install --user -r requirements.txt
+RUN pip install -r requirements.txt
 
 RUN echo $teste
 
 # copy project
 COPY . .
-RUN python3.9 src/main.py $test_mode
+RUN python3 src/main.py $test_mode
