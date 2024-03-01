@@ -10,12 +10,12 @@ pipeline {
 	environment {
 		VTOKEN_COMMENT = 'Vault Token'
         VTOKEN = credentials('VTOKEN')
-		OCTOKEN = credentials('OCToken')
-		OCSERVER = credentials('OCServer')
-		OCPROJECT = credentials('OCProject')
-		OCPOD = credentials('OCPod')
-		OCPORT = credentials('OCPort')
-		OCPORTFOR = credentials('OCPortForward')
+		OCToken = credentials('OCToken')
+		OCServer = credentials('OCServer')
+		OCProject = credentials('OCProject')
+		OCPod = credentials('OCPod')
+		OCPort = credentials('OCPort')
+		OCPortForward = credentials('OCPortForward')
 		TESTE_COMMMENT = 'Test Variable to check environment spread into podman instance'
 		TESTE = '123'
 		DPI_DEBUG_LEVEL=64
@@ -41,7 +41,7 @@ pipeline {
 				sh 'echo $VURL'
 				sh 'echo $TESTE_MODE'
 				sh 'echo $DSE_TEST_EXEC'
-				sh 'podman build --env=vtoken=$VTOKEN --env=vurl=$VURL --env=OCT=$OCTOKEN --env=OCS=$OCSERVER --env=OCP=$OCPROJECT --env=OCPO=$OCPOD --env=OCPT=$OCPORT --env=OCPF=$OCPORTFOR --env=test_mode=$DSE_TEST_EXEC --env=teste=$TESTE --platform=linux/amd64 --file=Dockerfile_Polaris .'
+				sh 'podman build --env=vtoken=$VTOKEN --env=vurl=$VURL --env=oct=$OCToken --env=ocs=$OCServer --env=ocp=$OCProject --env=ocpd=$OCPod --env=ocpt=$OCPort --env=ocpf=$OCPortForward --env=test_mode=$DSE_TEST_EXEC --env=teste=$TESTE --platform=linux/amd64 --file=Dockerfile_Polaris .'
 			}
 		 }		 
     }

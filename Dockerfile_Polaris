@@ -20,10 +20,10 @@ COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
 RUN echo $teste
-RUN echo $OCS
-RUN echo $OCT
-RUN echo $OCP
-RUN echo $OCPD
+RUN echo $ocs
+RUN echo $oct
+RUN echo $ocp
+RUN echo $ocpd
 
 # copy project
 COPY . .
