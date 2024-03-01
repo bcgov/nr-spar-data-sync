@@ -24,6 +24,7 @@ RUN echo $ocs
 RUN echo $oct
 RUN echo $ocp
 RUN echo $ocpd
+RUN echo $ocpf
 
 # copy project
 COPY . .
@@ -33,9 +34,9 @@ RUN mkdir oc_bin
 RUN dir
 RUN tar -xvf oci_core/openshift-client-linux-4.5.0-0.okd-2020-07-14-153706-ga.tar.gz -C oc_bin
 RUN ./oc_bin/oc version
-RUN ./oc_bin/oc login --token=$OCT --server=$OCS
-RUN ./oc_bin/oc project $OCP
-RUN ./oc_bin/oc port-forward $OCPD $OCPF:$OCPT
+RUN ./oc_bin/oc login --token=$oct --server=$ocs
+RUN ./oc_bin/oc project $ocp
+RUN ./oc_bin/oc port-forward $ocpd $ocpf:$ocpt
 
 
 RUN python3 src/main.py $test_mode
