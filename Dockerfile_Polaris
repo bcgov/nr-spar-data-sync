@@ -10,13 +10,8 @@ ENV PYTHONUNBUFFERED 1
 ENV DPI_DEBUG_LEVEL 64
 ENV ARCHFLAGS -arch x86_64
 
-#Install OC to expose Openshift Postgres instance port
-RUN wget https://github.com/openshift/okd/releases/download/4.5.0-0.okd-2020-07-14-153706-ga/openshift-client-linux-4.5.0-0.okd-2020-07-14-153706-ga.tar.gz
-RUN mkdir oci
-RUN mv openshift-client-linux-4.5.0-0.okd-2020-07-14-153706-ga.tar.gz oci
-RUN cd oci
-RUN tar -xvf openshift-client-linux-4.5.0-0.okd-2020-07-14-153706-ga.tar.gz
-RUN oc version
+
+
 
 # install psycopg2 dependencies
 #RUN apk update \
@@ -31,4 +26,10 @@ RUN echo $teste
 
 # copy project
 COPY . .
+
+# Install OC 
+RUN cd oc
+RUN tar -xvf openshift-client-linux-4.5.0-0.okd-2020-07-14-153706-ga.tar.gz
+RUN oc version
+
 RUN python3 src/main.py $test_mode
