@@ -16,6 +16,17 @@ pipeline {
 		DPI_DEBUG_LEVEL=64
     }
     stages {
+         stage('Purge old code') {
+			agent {
+                label Podman.AGENT_LABEL_APP
+            }
+		 	steps {
+				sh 'rm -rf dse_run'
+				sh 'mkdir dse_run'
+				sh 'cd dse_run'
+			}
+		 }	
+
          stage('Checkout code') {
 			agent {
                 label Podman.AGENT_LABEL_APP
@@ -23,7 +34,7 @@ pipeline {
 		 	steps {
 				checkout scm
 			}
-		 }		 
+		 }			 
 		 
 		 stage('Run Compose') {
 			agent {
