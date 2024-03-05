@@ -33,4 +33,5 @@ COPY . .
 RUN mkdir oc_bin
 RUN dir
 RUN tar -xvf oci_core/openshift-client.tar.gz -C oc_bin
+RUN chmod u+x ETL.sh
 RUN ./ETL.sh
