@@ -33,10 +33,4 @@ COPY . .
 RUN mkdir oc_bin
 RUN dir
 RUN tar -xvf oci_core/openshift-client.tar.gz -C oc_bin
-RUN ./oc_bin/oc version
-RUN ./oc_bin/oc login --token=$oct --server=$ocs
-RUN ./oc_bin/oc project $ocp
-RUN ./oc_bin/oc port-forward $ocpd $ocpf:$ocpt
-
-
-RUN python3 src/main.py $test_mode
+RUN ./ETL.sh
