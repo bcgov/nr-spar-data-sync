@@ -19,12 +19,12 @@ RUN pip install --upgrade pip
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
-RUN echo $teste
-RUN echo $ocs
-RUN echo $oct
-RUN echo $ocp
-RUN echo $ocpd
-RUN echo $ocpf
+#RUN echo $teste
+#RUN echo $ocs
+#RUN echo $oct
+#RUN echo $ocp
+#RUN echo $ocpd
+#RUN echo $ocpf
 
 # copy project
 COPY . .
@@ -34,4 +34,7 @@ RUN mkdir oc_bin
 RUN dir
 RUN tar -xvf oci_core/openshift-client.tar.gz -C oc_bin
 RUN chmod u+x ETL.sh
-RUN ./ETL.sh
+#RUN ./ETL.sh
+
+#RUNNING
+ENTRYPOINT  ["./ETL.sh", "-D", "FOREGROUND"]
