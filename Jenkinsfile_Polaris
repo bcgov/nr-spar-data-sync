@@ -49,8 +49,8 @@ pipeline {
 				sh 'echo $VURL'
 				sh 'echo $TESTE_MODE'
 				sh 'echo $DSE_TEST_EXEC'
-				sh 'podman build --env=vtoken=$VTOKEN --env=vurl=$VURL --env=oct=$OCToken --env=ocs=$OCServer --env=ocp=$OCProject --env=ocpd=$OCPod --env=ocpt=$OCPort --env=ocpf=$OCPortForward --env=test_mode=$DSE_TEST_EXEC --env=teste=$TESTE --platform=linux/amd64 --file=Dockerfile_Polaris --tag=etlrun .'
-				sh 'podman run --rm etlrun --name etlrunninginstance'
+				sh 'podman build --platform=linux/amd64 --file=Dockerfile_Polaris --tag=etlrun .'
+				sh 'podman run --env=vtoken=$VTOKEN --env=vurl=$VURL --env=oct=$OCToken --env=ocs=$OCServer --env=ocp=$OCProject --env=ocpd=$OCPod --env=ocpt=$OCPort --env=ocpf=$OCPortForward --env=test_mode=$DSE_TEST_EXEC --env=teste=$TESTE --rm etlrun --name etlrunninginstance'
 			}
 		 }		 
     }
